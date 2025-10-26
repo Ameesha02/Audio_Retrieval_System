@@ -1,0 +1,126 @@
+# Python caches & test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+coverage/
+htmlcov/
+
+# Don't ignore the venv root because your project files live there.
+# Ignore typical virtualenv-installed packages and caches instead.
+venv/lib/python*/site-packages/
+venv/lib/python*/dist-packages/
+venv/lib/python*/site-packages/**
+
+# Ignore compiled files anywhere
+**/__pycache__/
+**/*.py[cod]
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs and runtime
+*.log
+logs/
+*.pid
+
+# Secrets / env
+.env
+.env.*
+
+# Large or generated project artifacts
+artifacts/
+models/
+.cache/
+whisper_cache/
+torch_cache/
+huggingface/
+faiss_indexes/
+
+# Audio data (ignore large audio files)
+data/audio/
+data/*.wav
+data/*.mp3
+data/*.flac
+
+# Misc
+node_modules/
+*.bak
+*.swp
+```// filepath: /home/student/MIR_project/.gitignore
+# Python caches & test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+coverage/
+htmlcov/
+
+# Don't ignore the venv root because your project files live there.
+# Ignore typical virtualenv-installed packages and caches instead.
+venv/lib/python*/site-packages/
+venv/lib/python*/dist-packages/
+venv/lib/python*/site-packages/**
+
+# Ignore compiled files anywhere
+**/__pycache__/
+**/*.py[cod]
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs and runtime
+*.log
+logs/
+*.pid
+
+# Secrets / env
+.env
+.env.*
+
+# Large or generated project artifacts
+artifacts/
+models/
+.cache/
+whisper_cache/
+torch_cache/
+huggingface/
+faiss_indexes/
+
+# Audio data (ignore large audio files)
+data/audio/
+data/*.wav
+data/*.mp3
+data/*.flac
+
+# Misc

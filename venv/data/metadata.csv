@@ -1,0 +1,5 @@
+path,metadata
+/home/student/MIR_project/venv/data/audio/beep_440hz.wav,beep 440hz
+/home/student/MIR_project/venv/data/audio/low_tone.wav,low tone
+/home/student/MIR_project/venv/data/audio/chirp.wav,chirp
+/home/student/MIR_project/venv/data/audio/beep_880hz.wav,beep 880hz

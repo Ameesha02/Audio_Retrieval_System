@@ -1,0 +1,9 @@
+tensorflow>=2.11.0
+numpy
+resampy
+soundfile
+faiss-cpu
+openai-whisper
+streamlit
+pandas
+sentence-transformers
