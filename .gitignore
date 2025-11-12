@@ -118,7 +118,9 @@ huggingface/
 faiss_indexes/
 
 # Audio data (ignore large audio files)
-data/audio/
+
+venv/data/clothov2/development/development/*.wav
+venv/data/clothov2/evaluation/evaluation/*.wav
 data/*.wav
 data/*.mp3
 data/*.flac

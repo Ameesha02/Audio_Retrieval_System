@@ -3,7 +3,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
 DATA_DIR = PROJECT_ROOT / "data"
-AUDIO_DIR = DATA_DIR / "audio"
+AUDIO_DIR = DATA_DIR / "clothov2/developmnent/development"
 ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
 
 # Audio index artifacts

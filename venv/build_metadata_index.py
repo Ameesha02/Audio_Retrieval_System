@@ -1,6 +1,7 @@
 # build_metadata_index.py
 import pandas as pd
 import numpy as np
+import os
 import faiss
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
@@ -17,9 +18,34 @@ def main():
     if not META_CSV_PATH.exists():
         raise FileNotFoundError(f"Missing metadata CSV at {META_CSV_PATH}. Create it or run the auto-generator.")
 
-    df = pd.read_csv(META_CSV_PATH)
-    if "path" not in df.columns or "metadata" not in df.columns:
-        raise ValueError("metadata.csv must contain columns: path, metadata")
+    # df_dev = pd.read_csv("data/clothov2/development.csv")
+    # df_dev['path'] = 'data/clothov2/development/audio/' + df_dev['file_name']
+
+    # df_eval = pd.read_csv("data/clothov2/evaluation.csv")
+    # df_eval['path'] = 'data/clothov2/evaluation/audio/' + df_eval['file_name']
+
+    # df = pd.concat([df_dev, df_eval])
+    df = pd.read_csv("data/clothov2/development.csv")   # or evaluation.csv
+    df['path'] = df['file_name'].apply(lambda x: os.path.join("data/clothov2/development/development", x))
+   
+
+# --- Combine multiple caption columns into a single metadata field ---
+    caption_cols = [col for col in df.columns if col.startswith("caption_")]
+
+    if caption_cols:
+    # Merge all caption columns into one text field separated by " | "
+        df["metadata"] = df[caption_cols].fillna("").agg(" | ".join, axis=1)
+    else:
+    # Fallback in case no caption columns exist
+        if 'caption' in df.columns:
+            df.rename(columns={'caption': 'metadata'}, inplace=True)
+        elif 'text' in df.columns:
+            df.rename(columns={'text': 'metadata'}, inplace=True)
+        else:
+            df['metadata'] = "No caption"
+
+    
+    df[['path', 'metadata']].to_csv("data/metadata.csv", index=False)
 
     model = SentenceTransformer(EMBED_MODEL)
     texts = df["metadata"].fillna("").astype(str).tolist()

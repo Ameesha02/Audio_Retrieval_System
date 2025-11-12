@@ -13,7 +13,7 @@ from pathlib import Path
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
-AUDIO_DIR = PROJECT_ROOT / "data" / "audio"
+AUDIO_DIR = PROJECT_ROOT / "data" / "clothov2" / "development" / "development"
 ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
 INDEX_PATH = ARTIFACTS_DIR / "faiss_yamnet.index"
 MAPPING_PATH = ARTIFACTS_DIR / "id_to_path.txt"
