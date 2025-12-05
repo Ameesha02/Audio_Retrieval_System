@@ -16,7 +16,7 @@ df_kw = pd.read_csv(KEYWORDS_CSV, encoding="utf-8", encoding_errors="ignore")
 df_cap = pd.read_csv(CAPTIONS_CSV, encoding="utf-8", encoding_errors="ignore")
 
 
-# ------ CLEAN OS KEYWORDS ------
+# CLEAN OS KEYWORDS
 df_kw["keywords_clean"] = (
     df_kw["keywords"]
     .astype(str)
@@ -27,7 +27,7 @@ df_kw["keywords_clean"] = (
     .str.strip()
 )
 
-# ------ CLEAN FS CAPTIONS ------
+# CLEAN FS CAPTIONS 
 caption_cols = ["caption_1", "caption_2", "caption_3", "caption_4", "caption_5"]
 
 for c in caption_cols:
@@ -36,13 +36,13 @@ for c in caption_cols:
 # Merge captions into one field
 df_cap["captions_clean"] = df_cap[caption_cols].apply(lambda x: " ".join(x), axis=1)
 
-# ------ MERGE BOTH DATASETS ------
+# MERGE BOTH DATASETS 
 df = df_kw.merge(df_cap, on="file_name", how="inner")
 
 # Path column
 df["path"] = AUDIO_ROOT + df["file_name"]
 
-# ------ FINAL METADATA = OS + FS ------
+# -FINAL METADATA = OS + FS 
 df["metadata"] = df["keywords_clean"] + " " + df["captions_clean"]
 
 # Save final metadata.csv
