@@ -21,7 +21,7 @@ st.set_page_config(page_title="Audio + Metadata Fusion Retrieval", layout="cente
 # Models
 @st.cache_resource
 def load_yamnet():
-    return hub.load("https://tfhub.dev/google/yamnet/1")
+    return hub.load("/home/student/MIR_project/venv/models")
 
 @st.cache_resource
 def load_text_encoder():
@@ -122,7 +122,9 @@ if uploaded:
         rows.append((fused, cid, path, sa, sm))
     rows.sort(key=lambda x: x[0], reverse=True)
 
+
     st.subheader("Results (fused)")
     for rank, (fused, cid, pth, sa, sm) in enumerate(rows[:topk], 1):
         st.write(f"{rank}. score={fused:.3f} | audio={sa:.3f} | meta={sm:.3f} | {pth}")
         st.audio(pth)
+

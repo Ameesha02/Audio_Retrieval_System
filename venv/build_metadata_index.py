@@ -26,6 +26,8 @@ def main():
 
     # df = pd.concat([df_dev, df_eval])
     df = pd.read_csv("data/clothov2/development.csv")   # or evaluation.csv
+    df = df.sort_values("file_name")
+
     df['path'] = df['file_name'].apply(lambda x: os.path.join("data/clothov2/development/development", x))
    
 

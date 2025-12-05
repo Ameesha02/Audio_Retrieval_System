@@ -70,8 +70,10 @@ def embed_audio(file_path):
     
     try:
         scores, embeddings, spectrogram = yamnet_model(audio)
-        emb_mean = tf.reduce_mean(embeddings, axis=0).numpy()
+        emb_mean = tf.reduce_mean(embeddings, axis=0).numpy().astype("float32")
         print(f"   ✓ Generated embedding: {emb_mean.shape}")
+        emb_mean /= (np.linalg.norm(emb_mean) + 1e-12)
+        print(f"   ✓ Generated normalized embedding: {emb_mean.shape}")
         return emb_mean
     except Exception as e:
         print(f"   ✗ Embedding failed: {e}")
